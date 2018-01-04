@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery demo</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+<!--  Main stylesheet  -->
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+<!--  hoverView stylesheet  -->
+<link rel="stylesheet" href="css/normalize.min.css">
+<!--  side navi bar stylesheet  -->
+<link rel="stylesheet" href="css/navi.css">
+<!--  counting stylesheet  -->
+<link href="css/countdown.css" rel="stylesheet">
+</head>
+<body>
+    
+<!--    testing  scrolling position  -->
+    <script>
+    $(document).scroll(function(){
+    $("#lb").text($(document).scrollTop());
+        if($(document).scrollTop()>800)
+            {
+                var num = ($(document).scrollTop())/100;
+                var a = (-1/(4.5*4.5))*(num-13.5)*(num-13.5)+1; //generate a from 0->1->0 when scrolling
+                var b = (-1/25)*(num-20)*(num-20)+1; //generate b from 0->1->0 when scrolling
+                var c = 0.2*num-5; //generate c from 0->1 when scrolling
+                $(".text-a").css("opacity",a*2);
+                $(".text-a").css("font-size",204*a+"px")
+                $(".text-b").css("opacity",b*2);
+                $(".text-b").css("font-size",104*b+"px")
+                $(".text-c").css("opacity",c*2);
+                $(".text-c").css("font-size",104*c+"px")
+            }
+})
+    </script>
+    <div style="top:150px;left:32px;position:fixed;text-shadow:5px 5px 5px #050505;font-family:cursive;font-weight: bold">Current position: 
+            <span id="lb">0</span>
+    </div>
+    
+<!--  Lift navi  -->
+<div class="lift-nav">
+	<ul class="lift">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+    
+<div id="main lift-target">
+<!--  Web Header  -->
+  <div class="header t1">
+        <div class="full-center">
+            <h1 class="header__heading">Welcome</h1>
+            <h3 class="subscribe">This is a website for testing several jQuery plug-in</h3>
+        </div>
+        <div class="arrow__btn">
+            <img src="img/download.svg" alt="" width="50" height="50" class="btn">
+        </div>
+    </div>
+<!--  Front cover 1  -->
+<div class="front1">
+      <div class='container'>
+  <ul>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+    <li> <a class='normal' href='#'>
+      <svg viewBox='0 0 80 76' x='0px' y='0px'>
+        <g>
+          <path d='M 68.9708 24.8623 L 60.4554 2.3018 C 59.9641 0.7017 58.1628 -0.2583 56.5252 0.3817 L 1.9822 20.2222 C 0.3822 20.7022 -0.4179 22.6222 0.2222 24.2223 L 8.8624 47.7797 L 8.8624 35.1484 C 8.8624 29.5024 13.3425 24.8623 18.8857 24.8623 L 32.9442 24.8623 L 50.63 12.862 L 60.7829 24.8623 L 68.9708 24.8623 L 68.9708 24.8623 ZM 77.098 32.0625 L 18.8857 32.0625 C 17.2512 32.0625 16.0625 33.4511 16.0625 35.1484 L 16.0625 72.8491 C 16.0625 74.5477 17.2512 75.9375 18.8857 75.9375 L 77.098 75.9375 C 78.742 75.9375 79.9376 74.5477 79.9376 72.8491 L 79.9376 35.1484 C 79.9376 33.4511 78.742 32.0625 77.098 32.0625 L 77.098 32.0625 ZM 73.0626 68.0625 L 23.9375 68.0625 L 23.9375 61.0852 L 31.4704 43.7232 L 42.7696 57.6777 L 53.4138 46.8062 L 67.1695 41.9375 L 73.0626 55.0815 L 73.0626 68.0625 L 73.0626 68.0625 Z'></path>
+        </g>
+      </svg>
+      </a>
+      <div class='info'>
+        <h3>Single-origin coffee whatever</h3>
+        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+      </div>
+    </li>
+  </ul>
+              <div class="text-a">阅读</div>
+</div>
+  </div>
+<!--  Background 1  -->
+  <div class="bg-attachment div1 t2">
+    <div class="shadow">
+        <div class="arrow__btn1">
+            <img src="img/download.svg" alt="" width="50" height="50" class="btn1">
+        </div>
+    </div>
+  </div>
+<!--  Front cover 2  -->
+<div class="front2"></div>    
+<!--  Background 3  -->
+  <div class="bg-attachment div3 t3">
+    <div class="shadow">
+            <div class="text-b">出行</div>
+        <div class="arrow__btn2">
+            <img src="img/download.svg" alt="" width="50" height="50" class="btn2">
+        </div>
+    </div>
+  </div>
+<!--  Front cover 3  -->
+<div class="front3"></div>
+<!--  Background 2  -->
+  <div class="bg-attachment div2 t4">
+    <div class="shadow">
+            <div class="text-c">永无止境</div>
+        <div class="timer-box">
+            
+            <h5>As you can see your life remaining:</h5>
+            
+            <div id="countdown">
+                    
+                        <div class="dash weeks_dash">
+                            <span class="dash_title">Weeks</span>
+                            <div class="digit">0</div>
+                            <div class="digit">0</div>
+                        </div>
+    
+                        <div class="dash days_dash">
+                            <span class="dash_title">Days</span>
+                            <div class="digit">0</div>
+                            <div class="digit">0</div>
+                        </div>
+    
+                        <div class="dash hours_dash">
+                            <span class="dash_title">Hours</span>
+                            <div class="digit">0</div>
+                            <div class="digit">0</div>
+                        </div>
+    
+                        <div class="dash minutes_dash">
+                            <span class="dash_title">Minutes</span>
+                            <div class="digit">0</div>
+                            <div class="digit">0</div>
+                        </div>
+    
+                        <div class="dash seconds_dash">
+                            <span class="dash_title">Seconds</span>
+                            <div class="digit">0</div>
+                            <div class="digit">0</div>
+                        </div>
+    
+                    
+                        
+                </div> <!-- end of countdown -->
+    
+            
+        </div><!--/timer-box-->
+    </div>
+  </div>
+</div>
+<!--  Web Header Circle animation Script  -->
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="js/circleMagic.js"></script>
+<script>
+  window.onload = function() {
+    $(".btn").on("click", function (e) {
+      e.preventDefault();
+      var top = window.innerHeight;
+      console.log(top);
+      $('body,html').animate({scrollTop: top + 20}, 1200);
+    });
+      
+    $(".btn1").on("click", function (e) {
+      e.preventDefault();
+      var top = window.innerHeight;
+      console.log(top);
+      $('body,html').animate({scrollTop: 1994}, 1200);
+    });
+      
+    $(".btn2").on("click", function (e) {
+      e.preventDefault();
+      var top = window.innerHeight;
+      console.log(top);
+      $('body,html').animate({scrollTop: 3020}, 1200);
+    });
+
+    $('.header').circleMagic({
+      radius: 35,
+      density: .1,
+      color: 'rgba(255,255,255, .4)',
+      clearOffset: .9
+
+    });
+  }
+</script>
+<!--  hoverView Script  -->
+<script src="js/index.js"></script>
+<!--  Lift Script  -->
+<script src="js/LiftEffect.js"></script>  
+<script>
+
+	$(function(){
+		LiftEffect({
+			"control1": ".lift-nav", 						  
+			"control2": ".lift",                          
+			"target": [".t1",".t2",".t3",".t4"],
+			"current": "current"
+		});
+
+		
+	})    
+</script>
+<!--  Counting Script  -->
+<script language="Javascript" type="text/javascript" src="js/jquery.lwtCountdown-1.0.js"></script>
+		<script language="javascript" type="text/javascript">
+			jQuery(document).ready(function() {
+				$('#countdown').countDown({
+				targetDate: {
+				'day': 5,
+				'month': 8,
+				'year': 2024,
+				'hour': 11,
+				'min': 0,
+				'sec': 0
+				}
+				});
+			}); 
+		</script>
+</body>
+</html>
